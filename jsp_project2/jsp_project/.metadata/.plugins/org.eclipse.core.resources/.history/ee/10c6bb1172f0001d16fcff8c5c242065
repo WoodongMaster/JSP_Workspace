@@ -1,0 +1,24 @@
+package domain;
+
+public class MemㅠerVO {
+	/* create table member(
+		id varchar(100) not null,
+		password varchar(100) not null,
+		email varchar(100) not null,
+		age int,
+		reg_date datetime default now(),
+		last_login datetime default null);
+	 * 
+	 * */
+	
+	private String id;
+	private String password;
+	private String email;
+	private int age;
+	private String reg_date;
+	private String last_login;
+	
+	public MemberVO() {}
+	
+	//생성자
+}

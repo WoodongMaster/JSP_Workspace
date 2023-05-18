@@ -1,0 +1,20 @@
+package service;
+
+import domain.MemberVO;
+
+public class MemberServiceImpl implements MemberService {
+	private MemberDAO mdao;
+	
+	public MemberServiceImpl() {
+		mdao = new MemberDAOImpl();
+	}
+	
+	
+	
+	@Override
+	public int register(MemberVO mvo) {
+		
+		return 0;
+	}
+
+}

@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>modify page</title>
+</head>
+<body>
+		<h1>modify 제품 수정 페이지</h3>
+	
+	<br>
+	
+	<form action="mem/modify" method="post">
+		아이디 : <input type="text" name="id" value="${mvo.id }" disabled="disabled"> <br> 
+		비밀번호 : <input type="password" name="password" value="${mvo.password }"> <br>
+		나이 : <input type="text" name="age" value="${mvo.age }"> <br>
+		이메일 : <input type="text" name="email" value="${mvo.email }" > <br>
+		등록일 : <input type="text" name="reg_date" value="${mvo.reg_date }" disabled="disabled"> <br>
+		
+		<button type="submit">수정하기 modify</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시글 상세보기 페이지</title>
+</head>
+<body>
+
+<%--int bnum, String title, String writer, String write_date,String post --%>
+	<table border="1">
+	<tr>
+		<th>글번호</th>
+	</tr>
+	<tr>
+		<td>${bvo.bnum} }</td>
+	</tr>
+		<tr>
+		<th>제목</th>
+	</tr>
+	<tr>
+		<td>${bvo.title} }</td>
+	</tr>
+		<tr>
+		<th>작성자</th>
+	</tr>
+	<tr>
+		<td>${bvo.writer} }</td>
+	</tr>
+		<tr>
+		<th>내용</th>
+	</tr>
+	<tr>
+		<td>${bvo.post} }</td>
+	</tr>
+	</table>
+</body>
+</html>

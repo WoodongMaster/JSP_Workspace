@@ -1,0 +1,96 @@
+package domain;
+
+public class BoardVO {
+//	create table board(
+//	bno int primary key auto_increment,
+//	title varchar(100) not null,
+//	writer varchar(100) not null,
+//	write_date datetime default now(),
+//	post text);
+	private String bno;
+	private String title;
+	private String writer;
+	private String post;
+	private String write_date;
+	
+	public BoardVO(){}
+	
+	// 게시글 등록
+	public BoardVO(String title, String writer, String post)
+	{
+		this.title=title;
+		this.writer=writer;
+		this.post=post;
+	}
+	
+	// 게시글 리스트
+	public BoardVO(String bno, String title, String writer, String write_date)
+	{	
+		this.bno=bno;
+		this.title=title;
+		this.writer=writer;
+		this.write_date=write_date;
+	}
+
+	// 게시글 읽기
+	public BoardVO(String bno, String title, String writer, String write_date,String post)
+	{
+		this(bno,title,writer,write_date);
+		this.post = post;
+	}
+
+	// 게시글 수정
+	public BoardVO(int bno, String title, String post)
+	{
+		this.bno=bno;
+		this.title=title;
+		this.post=post;
+	}
+
+	public String getBno() {
+		return bno;
+	}
+
+	public void setBno(String bno) {
+		this.bno = bno;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getPost() {
+		return post;
+	}
+
+	public void setPost(String post) {
+		this.post = post;
+	}
+
+	public String getWrite_date() {
+		return write_date;
+	}
+
+	public void setWrite_date(String write_date) {
+		this.write_date = write_date;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVO [bno=" + bno + ", title=" + title + ", writer=" + writer + ", post=" + post + ", write_date="
+				+ write_date + "]";
+	}
+	
+}

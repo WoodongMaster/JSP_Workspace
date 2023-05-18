@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configration status="DEBUG"> <!-- status: 버그를 얼마나 자세하게 띄울것인지 지정 -->
+	<Appenders>
+		<console name="console" target="SYSTEM_OUT"> <!-- 하단에 출력하겠다 -->
+			<PatternLayout pattern="%d - %msg%n"></PatternLayout> <!-- 패턴은 날짜 - 메세지로 하겠다 -->
+		</console>
+	</Appenders>
+	
+	<Loggers>
+		<Root level="DEBUG">
+			<AppenderRef ref="console" /> <!-- '/>'는 닫는 태그 대신 사용 가능 -->
+		
+		</Root>
+	</Loggers>
+</Configration>

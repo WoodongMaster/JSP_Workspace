@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="model.PersonVO"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSTL choose</title>
+</head>
+<body>
+<%-- model 패키지안에 person 클래스 생성 --%>
+	<%
+		PersonVO pv = new PersonVO("존", 25);
+		request.setAttribute("p1", pv);
+	%>
+	
+	이름 : ${p1.name}<br>
+	나이 : ${p1.age}<br>
+	
+	<c:if test="true"></c:if>
+	
+	<c:if test="${p1.age>20 }">
+		성인입니다
+	</c:if>
+</body>
+</html>

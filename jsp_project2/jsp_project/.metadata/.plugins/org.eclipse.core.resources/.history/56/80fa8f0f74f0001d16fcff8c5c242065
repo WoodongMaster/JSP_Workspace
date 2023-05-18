@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>join 회원가입 페이지</title>
+</head>
+<body>
+	<form action="" method="post">
+		id : <input type="text" name="id">
+		password : <input type="text" name="password">
+		email : <input type="text" name="email">
+		age : <input type="text" name="age">
+		<button type="submit">가입완료</button>
+	</form>
+</body>
+</html>

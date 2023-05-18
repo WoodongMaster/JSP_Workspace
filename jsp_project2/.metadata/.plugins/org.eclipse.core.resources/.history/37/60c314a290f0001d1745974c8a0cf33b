@@ -1,0 +1,29 @@
+package repository;
+
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import domain.MemberVO;
+import orm.DatabaseBuilder;
+
+public class MemberDAOImpl implements MemberDAO {
+	private static final Logger log = LoggerFactory.getLogger(MemberDAOImpl.class);
+	private SqlSession sql;
+	//NameSpace = SQL이 mapper를 구분하기 위한 이름
+	//NameSpace.SQL구문이름
+	private String NS = "MemberMapper.";
+	
+	public MemberDAOImpl() {
+		new DatabaseBuilder();
+		sql = DatabaseBuilder.getFactory().openSession();
+	}
+	@Override
+	public int register(MemberVO mvo) {
+		//sql.insert(MemberMapper.reg, 객체); 로 인식
+		//트랜잭션 처리상태임 (commit 필요)
+		int isOk = sql.insert(NS+"reg");
+		return isOk;
+	}
+
+}

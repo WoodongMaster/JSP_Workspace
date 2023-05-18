@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PetternLayout pattern="%d - %msg%n"></PetternLayout>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root lever="DEBUG">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>

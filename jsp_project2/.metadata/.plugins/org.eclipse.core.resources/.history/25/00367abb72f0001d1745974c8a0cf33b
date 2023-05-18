@@ -1,0 +1,25 @@
+package domain;
+
+public class MemberVO {
+//	create table member(
+//			mno int auto_increment primary key,
+//			id varchar(50) not null,
+//			password varchar(50) not null,
+//			name varchar(20) not null,
+//			age int not null,
+//			email varchar(100) not null,
+//			addresss varchar(50) not null,
+//			reg_date datetime default now(),
+//			last_login datetime default null
+//			)
+	private int mno;
+	private String id;
+	private String password;
+	private String name;
+	private int age;
+	private String email;
+	private String address;
+	private String reg_date;
+	private String last_login;
+	
+}

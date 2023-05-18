@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EL param 연습2</title>
+</head>
+<body>
+	<a href="step02-2.jsp">step02-2로 이동</a>
+	${param.nick}<br>
+	${param.age}<br>
+	
+</body>
+</html>

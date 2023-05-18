@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+			<tr align="center">
+				<td>상품번호</td>
+				<td>${pvo.pno}</td>
+			</tr>
+			<tr align="center">
+				<td>상품명</td>
+				<td>${pvo.pname}</td>
+			</tr>
+			<tr align="center">
+				<td>가격</td>
+				<td>${pvo.price}</td>
+			</tr>
+			<tr align="center">
+				<td>등록일자</td>
+				<td>${pvo.regdate}</td>
+			</tr>
+			<tr align="center">
+				<td>세부내용</td>
+				<td>${pvo.madeby}</td>
+			</tr>
+	</table>
+</body>
+</html>

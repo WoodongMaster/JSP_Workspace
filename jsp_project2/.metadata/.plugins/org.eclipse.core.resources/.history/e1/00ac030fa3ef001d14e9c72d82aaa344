@@ -1,0 +1,17 @@
+package repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import domain.ProductVO;
+
+public class ProductDAO implements DAO {
+
+	private Connection conn;
+	private PreparedStatement ps;
+	public int insert(ProductVO pvo) {
+		// 
+		return 0;
+	}
+
+}

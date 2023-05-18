@@ -1,0 +1,6 @@
+
+5월 16, 2023 10:25:55.978 NEW SESSION
+5월 16, 2023 10:25:55.978 [7480:8304:0516/102555.977:ERROR:interface_endpoint_client.cc(696)] Message 0 rejected by interface blink.mojom.WidgetHost
+5월 16, 2023 12:32:51.142 [7480:8304:0516/123251.141:ERROR:device_event_log_impl.cc(222)] [12:32:51.142] Bluetooth: bluetooth_adapter_winrt.cc:1058 Getting Default Adapter failed.
+5월 16, 2023 12:41:13.810 [7480:8304:0516/124113.810:ERROR:sharing_service.cc(252)] Device un-registration failed with fatal error
+5월 16, 2023 13:51:03.673 [libprotobuf ERROR ..\..\third_party\protobuf\src\google\protobuf\message_lite.cc:133] Can't parse message of type "safe_browsing.ClientDownloadRequest" because it is missing required fields: (cannot determine missing fields for lite message)

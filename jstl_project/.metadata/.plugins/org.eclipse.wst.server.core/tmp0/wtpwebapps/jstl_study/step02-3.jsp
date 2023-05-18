@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EL param 연습3</title>
+</head>
+<body>
+	<a href="step02-2.jsp">step02-2로 이동</a><br>
+	<hr>
+	<%-- 스클립틀릿방식은 String 형태--%>
+	<h3>스클립틀릿 방식으로 값받음</h3>
+	<%= request.getParameter("nick") %><br>
+	<%= request.getParameter("age")+1 %>세<br>
+	
+	<%-- EL방식은 내부적으로 형변환 parseInt가 이루어져 연산이 가능 --%>
+	<h3>EL 방식으로 값받음</h3>
+	${param.nick}<br>
+	${param.age+1}세<br>
+	<form action="step02-4.jsp">
+	<input type="checkbox" name="food" value="삼겹살">삼겹살<br>
+	<input type="checkbox" name="food" value="돈까스">돈까스<br>
+	<input type="checkbox" name="food" value="김밥">김밥<br>
+	<input type="checkbox" name="food" value="떡볶이">떡볶이<br>
+	<input type="submit" value="전송">
+	</form>
+	
+	
+	
+</body>
+</html>
