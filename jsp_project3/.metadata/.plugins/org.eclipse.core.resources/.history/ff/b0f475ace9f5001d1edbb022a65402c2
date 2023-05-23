@@ -1,0 +1,29 @@
+package domain;
+
+public class CommentVO {
+	private int cnum;
+	private int bnum;
+	private String writer;
+	private String comment;
+	private String reg_date;
+	
+	CommentVO(){}
+	
+	CommentVO(int bnum, String writer, String comment, String reg_date){
+		this.bnum=bnum;
+		this.writer=writer;
+		this.comment=comment;
+		this.reg_date=reg_date;
+	}
+	
+	//작성자, 내용, 댓글번호
+	
+	//댓글번호 내용
+	CommentVO(int cnum, int bnum, String writer, String comment, String reg_date){
+		this.cnum=cnum;
+		this.bnum=bnum;
+		this.writer=writer;
+		this.comment=comment;
+		this.reg_date=reg_date;
+	}
+}

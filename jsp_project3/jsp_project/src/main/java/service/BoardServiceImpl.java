@@ -1,6 +1,8 @@
 package service;
 
 import domain.BoardVO;
+import domain.LikesList;
+import domain.PagingVO;
 import repository.BoardDAO;
 import repository.BoardDAOImpl;
 
@@ -40,6 +42,21 @@ public class BoardServiceImpl implements BoardService {
 	public int remove(int bnum) {
 		log.info(">>> remove Service 진입");
 		return bdao.delete(bnum);
+	}
+	@Override
+	public int like(LikesList ll) {
+		log.info(">>> like Service 진입");
+		return bdao.like(ll);
+	}
+	@Override
+	public int getTotal() {
+		log.info(">>> getTotal Service 진입");
+		return bdao.getTotal();
+	}
+	@Override
+	public List<BoardVO> getPageList(PagingVO pgvo) {
+		log.info(">>> getPageList Service 진입");
+		return bdao.getPageList(pgvo);
 	}
 
 }

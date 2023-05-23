@@ -18,7 +18,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${ses}" var="list">
+			<c:forEach items="${mem_list}" var="list">
 			<tr align="center">
 		<td>${list.id}</td>
 		<td>${list.email}</td>
@@ -28,5 +28,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<a href="/"><button>메인으로</button></a>
 </body>
 </html>

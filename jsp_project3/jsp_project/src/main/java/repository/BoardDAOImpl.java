@@ -1,12 +1,16 @@
 package repository;
 
+
 import java.util.List;
+
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import domain.BoardVO;
+import domain.LikesList;
+import domain.PagingVO;
 import orm.DatabaseBuilder;
 
 public class BoardDAOImpl implements BoardDAO {
@@ -74,6 +78,39 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		
 		return isOk;
+	}
+
+	@Override
+	public int like(LikesList ll) {
+		log.info(">>> likeDAO 진입");
+		int isOk1, isOk2;
+
+		if(ll.isValue()) {			
+			isOk1 = sql.insert("LikeListMapper.like", ll);
+			isOk2 = sql.update(NS+"like");
+			
+		}else {
+			isOk1 = sql.delete("LikeListMapper.unlike", ll);
+			isOk2 = sql.update(NS+"unlike");
+		}
+		
+		if(isOk1==1 && isOk2==1) {
+			sql.commit();
+		}
+		return (isOk1==1 && isOk2==1)? 1 : 0;
+	}
+
+	@Override
+	public int getTotal() {
+		log.info(">>> getTotalDAO 진입");
+		int totalCount = sql.selectOne(NS+"getTotal");
+		return totalCount;
+	}
+
+	@Override
+	public List<BoardVO> getPageList(PagingVO pgvo) {
+		log.info(">>> getTotalDAO 진입");
+		return sql.selectList(NS+"getPageList",pgvo);
 	}
 
 }

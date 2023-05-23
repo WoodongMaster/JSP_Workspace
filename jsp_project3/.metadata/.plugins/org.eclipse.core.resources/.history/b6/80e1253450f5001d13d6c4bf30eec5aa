@@ -1,0 +1,12 @@
+package domain;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LikesList {
+	private String id;
+	private int bnum;
+	private boolean value;
+	
+
+}

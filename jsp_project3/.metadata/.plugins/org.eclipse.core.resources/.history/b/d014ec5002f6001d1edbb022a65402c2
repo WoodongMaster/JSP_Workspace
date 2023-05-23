@@ -1,0 +1,89 @@
+package domain;
+
+public class CommentVO {
+	private int cnum;
+	private int bnum;
+	private String writer;
+	private String comment;
+	private String reg_date;
+	
+	public CommentVO(){}
+	
+	//게시용
+	public CommentVO(int bnum, String writer, String comment, String reg_date){
+		this.bnum=bnum;
+		this.writer=writer;
+		this.comment=comment;
+		this.reg_date=reg_date;
+	}
+	
+	//작성자, 내용, 댓글번호
+	public CommentVO(int cnum, String writer, String comment){
+		this.cnum=cnum;
+		this.writer=writer;
+		this.comment=comment;
+	}
+	
+	//댓글번호 내용
+	public CommentVO(int cnum, String comment){
+		this.cnum=cnum;
+		this.comment=comment;
+	}
+	
+	//전체
+	public CommentVO(int cnum, int bnum, String writer, String comment, String reg_date){
+		this.cnum=cnum;
+		this.bnum=bnum;
+		this.writer=writer;
+		this.comment=comment;
+		this.reg_date=reg_date;
+	}
+
+	public int getCnum() {
+		return cnum;
+	}
+
+	public void setCnum(int cnum) {
+		this.cnum = cnum;
+	}
+
+	public int getBnum() {
+		return bnum;
+	}
+
+	public void setBnum(int bnum) {
+		this.bnum = bnum;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public String getReg_date() {
+		return reg_date;
+	}
+
+	public void setReg_date(String reg_date) {
+		this.reg_date = reg_date;
+	}
+
+	@Override
+	public String toString() {
+		return "CommentVO [cnum=" + cnum + ", bnum=" + bnum + ", writer=" + writer + ", comment=" + comment
+				+ ", reg_date=" + reg_date + "]";
+	}
+	
+	
+}

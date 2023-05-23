@@ -1,0 +1,7 @@
+package domain;
+
+import java.util.ArrayList;
+
+public class LikesList {
+	List <String> likeIDs = new ArrayList<>();
+}

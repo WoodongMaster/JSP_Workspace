@@ -16,7 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import domain.BoardVO;
+import domain.LikesList;
 import domain.MemberVO;
+import domain.PagingVO;
+import handler.PagingHandler;
 import service.BoardService;
 import service.BoardServiceImpl;
 
@@ -60,7 +63,7 @@ public class BoardController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			destPage="/brd/list";
+			destPage="/brd/page";
 			break;
 		case "list":
 			try {
@@ -73,16 +76,68 @@ public class BoardController extends HttpServlet {
 			destPage="/board/list.jsp";
 			break;
 			
+		case "page":
+			try {
+				int pageNum = 1;
+				int qty = 10;
+				if(request.getParameter("pageNum") != null) {	// 값이 없다면 limit 1,10으로 있다면 그 값으로 limit
+					pageNum = Integer.parseInt(request.getParameter("pageNum"));
+					qty = Integer.parseInt(request.getParameter("qty"));
+				}
+				PagingVO pgvo = new PagingVO(pageNum,qty); // 이미 1,10 default로 설정되어있음
+				int totalCount = bsv.getTotal();
+				log.info(">>>>총 개수 : "+totalCount);
+				
+				List<BoardVO> list = bsv.getPageList(pgvo); // limit를 이용한 select List를 호출(startPage, qty)
+				log.info(">>>> 가져온 리스트 사이즈 : "+list.size());
+				
+				PagingHandler ph = new PagingHandler(pgvo, totalCount);
+				request.setAttribute("pgh", ph);
+				request.setAttribute("list", list);
+				
+				log.info(">>>> 페이지 리스트 성공");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			destPage="/board/list.jsp";
+			break;
+			
+//		case "pagesub":
+//			try {
+//				int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+//				int qty = Integer.parseInt(request.getParameter("qty"));
+//				
+//				PagingVO pgvo = new PagingVO(pageNum, qty); // 이미 1,10 default로 설정되어있음
+//				int totalCount = bsv.getTotal();
+//				log.info(">>>>총 개수 : "+totalCount);
+//				
+//				List<BoardVO> list = bsv.getPageList(pgvo); // limit를 이용한 select List를 호출(startPage, qty)
+//				log.info(">>>> 가져온 리스트 사이즈 : "+list.size());
+//				
+//				PagingHandler ph = new PagingHandler(pgvo, totalCount);
+//				request.setAttribute("pgh", ph);
+//				request.setAttribute("list", list);
+//				
+//				log.info(">>>> 페이지 리스트 성공");
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			destPage="/board/list.jsp";
+//			break;
+//			
 		case "post":
 			try {
 				HttpSession ses = request.getSession();
 				MemberVO mvo = (MemberVO)ses.getAttribute("ses");
-				String sesID= mvo.getId();
+				if(mvo!=null) {
+					String sesID= mvo.getId();
+					request.setAttribute("sesID", sesID);					
+				}
+				
 				int bnum = Integer.parseInt(request.getParameter("bnum"));
 				BoardVO bvo = bsv.post(bnum);
 				log.info(">>> 게시글 출력"+ ( bvo==null ? "실패" : "성공"));
 				request.setAttribute("post", bvo);
-				log.info(">> ses.id : "+sesID+"writer : "+bvo.getWriter());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -124,6 +179,23 @@ public class BoardController extends HttpServlet {
 			}
 			destPage="/brd/list";
 			break;	
+		
+		case "like":
+			try {
+				HttpSession ses = request.getSession();
+				MemberVO mvo = (MemberVO)ses.getAttribute("ses");
+				String id = mvo.getId();
+				int bnum = Integer.parseInt(request.getParameter("bnum"));
+				boolean value = Boolean.parseBoolean(request.getParameter("value"));
+				LikesList ll = new LikesList(id, bnum, value);
+				isOk = bsv.like(ll);
+				log.info(">>> 게시글 추천"+ ( (isOk>0) ? "성공" : "실패"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			destPage="/brd/list";
+			break;
+		
 		}
 		
 		

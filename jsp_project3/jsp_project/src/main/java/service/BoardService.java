@@ -3,6 +3,8 @@ package service;
 import java.util.List;
 
 import domain.BoardVO;
+import domain.LikesList;
+import domain.PagingVO;
 
 
 public interface BoardService {
@@ -16,5 +18,13 @@ public interface BoardService {
 	int edit(BoardVO bvo);
 
 	int remove(int bnum);
+
+	int like(LikesList ll);
+
+	int getTotal();
+
+	List<BoardVO> getPageList(PagingVO pgvo);
+
+
 
 }

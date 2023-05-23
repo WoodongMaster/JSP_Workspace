@@ -55,8 +55,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return isOk;
 	}
 
-
-
 	@Override
 	public int edit(MemberVO mvo2) {
 		log.info(">>> edit DAO 진입");
@@ -66,8 +64,6 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return isOk;
 	}
-
-
 
 	@Override
 	public int delete(String id2) {

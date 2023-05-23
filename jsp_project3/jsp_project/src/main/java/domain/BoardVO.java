@@ -13,6 +13,7 @@ public class BoardVO {
 	private String post;
 	private String write_date;
 	private int count;
+	private int likes;
 	
 	public BoardVO(){}
 	
@@ -25,19 +26,20 @@ public class BoardVO {
 	}
 	
 	// 게시글 리스트
-	public BoardVO(int bnum, String title, String writer, String write_date, int count)
+	public BoardVO(int bnum, String title, String writer, String write_date, int count, int likes)
 	{	
 		this.bnum=bnum;
 		this.title=title;
 		this.writer=writer;
 		this.write_date=write_date;
 		this.count=count;
+		this.likes=likes;
 	}
 
 	// 게시글 읽기
-	public BoardVO(int bnum, String title, String writer, String write_date,int count,String post)
+	public BoardVO(int bnum, String title, String writer, String write_date,int count, int like,String post)
 	{
-		this(bnum,title,writer,write_date,count);
+		this(bnum,title,writer,write_date,count,like);
 		this.post = post;
 	}
 
@@ -97,11 +99,21 @@ public class BoardVO {
 		this.count = count;
 	}
 
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int like) {
+		this.likes = like;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bnum=" + bnum + ", title=" + title + ", writer=" + writer + ", post=" + post + ", write_date="
-				+ write_date + ", count=" + count + "]";
+				+ write_date + ", count=" + count + ", likes=" + likes + "]";
 	}
+
+
 
 	
 	

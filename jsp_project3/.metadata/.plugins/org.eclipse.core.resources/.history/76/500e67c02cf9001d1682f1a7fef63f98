@@ -1,0 +1,17 @@
+package handler;
+
+import domain.PagingVO;
+
+public class PagingHandler {
+	
+	private int startPage;	 // 시작 페이지 (현재 화면에서 보여줄 시작 페이지네이션 번호)
+	private int endPage;	// 끝 페이지 (현재 화면에서 보여줄 끝 페이지네이션 번호)
+	private boolean prev, next; // 이전, 다음버튼 존재 유무
+	private int totalCount; // 전체 게시물 수
+	private PagingVO pgvo;
+	
+	public PagingHandler(PagingVO pgvo, int totalCount) {
+		this.pgvo = pgvo;
+		
+	}
+}

@@ -1,0 +1,33 @@
+package domain;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LikesList {
+	private List <String> LikeIDs = new ArrayList<>();
+	private int bnum;
+	
+	
+	public int getBnum() {
+		return bnum;
+	}
+
+	public void setBnum(int bnum) {
+		this.bnum = bnum;
+	}
+
+	public List<String> getLikeIDs() {
+		return LikeIDs;
+	}
+
+	public void setLikeIDs(List<String> LikeIDs) {
+		this.LikeIDs = LikeIDs;
+	}
+
+	@Override
+	public String toString() {
+		return "LikesList [LikeIDs=" + LikeIDs + ", bnum=" + bnum + "]";
+	}
+	
+	
+}

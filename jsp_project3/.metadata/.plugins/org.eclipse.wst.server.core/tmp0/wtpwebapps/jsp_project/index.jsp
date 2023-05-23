@@ -15,8 +15,6 @@
 		<br><br>
 	</c:if>
 
-	<a href="/mem/join"><button>회원가입</button></a>
-	
 	<c:choose>
 		<c:when test="${ses.id ne null}">		
 		<a href="/mem/logout"><button>로그아웃</button></a><br><br>
@@ -25,14 +23,10 @@
 	<a href="/mem/list"><button>회원리스트 보기</button></a>
 		</c:when>
 		<c:otherwise>
-		<a href="/mem/login"><button>로그인</button></a><br><br>
+		<a href="/mem/login"><button>로그인</button></a> <a href="/mem/join"><button>회원가입</button></a><br><br>
 		</c:otherwise>
 	</c:choose>
-	<a href="/brd/list"><button>게시글보기</button></a>
+	<a href="/brd/page"><button>게시글보기</button></a>
 
-
-
-	<!-- /mem/을 붙였다 = controller을 거쳐온다 -->
-	
 </body>
 </html>

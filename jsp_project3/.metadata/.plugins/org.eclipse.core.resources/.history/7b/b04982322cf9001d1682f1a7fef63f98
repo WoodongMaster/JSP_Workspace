@@ -1,0 +1,7 @@
+package handler;
+
+public class PagingHandler {
+	
+	private int startPage;	 // 시작 페이지
+	private int endPage;	// 끝 페이지
+}

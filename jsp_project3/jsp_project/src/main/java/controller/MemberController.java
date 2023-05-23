@@ -36,13 +36,13 @@ public class MemberController extends HttpServlet {
 
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// charactorEncoding 설정 / contentType / uri경로 확인
+		// 
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8"); 
 		response.setContentType("text/html; charset=utf-8");
 		
-		String uri = request.getRequestURI(); //전체 요청경로
-		// uri = mem/join -> 요청에 대한 path만  남길래!
+		String uri = request.getRequestURI();
+		
 		String path = uri.substring(uri.lastIndexOf("/")+1);
 		log.info(">>path: " +path);
 		
@@ -120,15 +120,6 @@ public class MemberController extends HttpServlet {
 			break;
 			
 		case "modify_rdy":
-			try {
-				HttpSession ses = request.getSession();
-				MemberVO mvo2 = (MemberVO)ses.getAttribute("ses");
-				log.info(">>>> modify_rdy mvo2 : "+ mvo2);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
 			destPage="/member/modify.jsp";
 			break;
 		
@@ -172,6 +163,7 @@ public class MemberController extends HttpServlet {
 				log.info("ses log => "+ses);
 				MemberVO mvo2 = (MemberVO)ses.getAttribute("ses");
 				String id2 = mvo2.getId();
+//				String Getid = ((MemberVO)ses.getAttribute("ses")).getId();
 				ses.invalidate();
 				isOk = msv.delete(id2);
 				log.info(">>> 회원탈퇴 > " + (isOk > 0 ? "성공" : "실패"));
@@ -184,8 +176,7 @@ public class MemberController extends HttpServlet {
 		case "list":
 			try {
 				List<MemberVO> list = msv.showlist();
-				HttpSession ses = request.getSession();
-				ses.setAttribute("ses", list);
+				request.setAttribute("mem_list", list);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

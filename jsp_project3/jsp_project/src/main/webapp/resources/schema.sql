@@ -18,3 +18,26 @@ write_date datetime default now(),
 post text,
 count int default 0);
 
+alter alter table board add count int default 0;
+
+--2023-05-18
+alter alter table board add likes int default 0;
+
+create table likelist(
+bnum int not null,
+id varchar(100) not null);
+
+alter table member add primary key(id);
+alter table likelist add foreign key(bnum) references board(bnum);
+alter table likelist add foreign key(id) references member(id);
+
+--2023-05-19 댓글 table
+create table comment(
+cnum int auto_increment primary key,
+bnum int default 0,
+writer varchar(50) default '익명',
+comment text,
+reg_date datetime default now());
+
+--2023-05-23 페이징 mapper 기입
+select * from board order by bnum desc limit #{startPage},#{qty};
