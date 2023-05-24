@@ -49,14 +49,13 @@ public class BoardServiceImpl implements BoardService {
 		return bdao.like(ll);
 	}
 	@Override
-	public int getTotal() {
+	public int getTotal(PagingVO pgvo) {
 		log.info(">>> getTotal Service 진입");
-		return bdao.getTotal();
+		return bdao.getTotal(pgvo);
 	}
 	@Override
 	public List<BoardVO> getPageList(PagingVO pgvo) {
 		log.info(">>> getPageList Service 진입");
 		return bdao.getPageList(pgvo);
 	}
-
 }

@@ -23,13 +23,14 @@ public class PagingHandler {
 		
 		// * Math.ceil = 반올림이 아니고 그냥 올림 1.1 => 2 (= x와 같거나 큰 수 중에서 가장 작은 정수를 반환함.)
 		// (페이지 번호 / 한 화면의 게시글 수) * 한 화면의 게시글 수
-		// ex) (1 / 10) * 10 => 0.1(1) * 10 => 10
-		// ex) (2 / 10) * 10 => 0.2(1) * 10 => 10
-		// ex) (12 / 10) * 10 => 1.2(2) * 10 => 20		
-		// ex) (21 / 10) * 10 => 2.1(3) * 10 => 30
+		// ex) (1 / 10.0) * 10 => 0.1(1) * 10 => 10
+		// ex) (2 / 10.0) * 10 => 0.2(1) * 10 => 10
+		// ex) (12 / 10.0) * 10 => 1.2(2) * 10 => 20		
+		// ex) (21 / 10.0) * 10 => 2.1(3) * 10 => 30
 		this.endPage = (int)(Math.ceil(pgvo.getPageNum() / (pgvo.getQty()*1.0))) * pgvo.getQty();
 		this.startPage = this.endPage-9;
 		int realEndPage = (int)Math.ceil((totalCount*1.0) / pgvo.getQty()); // 마지막 페이지네이션 번호
+		
 		if(realEndPage < this.endPage) {
 			this.endPage = realEndPage;
 		}

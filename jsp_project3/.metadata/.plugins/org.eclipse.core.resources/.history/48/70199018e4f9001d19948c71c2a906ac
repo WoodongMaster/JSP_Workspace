@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace = "BoardMapper">
+	<insert id="reg" parameterType="bvo">
+	  	insert into board (title, writer, post) 
+  		values(#{title}, #{writer}, #{post})
+	</insert>
+	<select id="list" resultType="bvo">
+		select * from board
+	</select>
+	<update id="countUP" parameterType="int">
+		update board set count=count+1 where bnum=#{bnum}
+	</update>
+	<select id="select" parameterType="int" resultType="bvo">
+		select * from board where bnum=#{bnum}
+	</select>
+	<update id="edit" parameterType="bvo">
+		update board set title=#{title}, post=#{post} where bnum=#{bnum}
+	</update>
+	<delete id="remove" parameterType="int">
+		delete from board where bnum=#{bnum};
+	</delete>
+	<update id="like" parameterType="ll">
+		update board set likes=(select count(id) from likelist where bnum=#{bnum})
+	</update>
+	<update id="unlike" parameterType="ll">
+		update board set likes=(select count(id) from likelist where bnum=#{bnum})
+	</update>
+	<select id="getTotal" resultType="int">
+		select count(bnum) from board
+	</select>
+	<select id="getPageList" parameterType="pgvo" resultType="bvo">
+		select * from board order by bnum desc limit #{startPage},#{qty}
+	</select>
+	
+	<sql id="search">
+		<if test="type != null">
+			<trim prefix="and (" suffix=")" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 't'.toString()">
+								title like concat('%', #{keyword}, '%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+  </mapper>

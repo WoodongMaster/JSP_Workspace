@@ -21,10 +21,8 @@ public interface BoardService {
 
 	int like(LikesList ll);
 
-	int getTotal();
+	int getTotal(PagingVO pgvo);
 
 	List<BoardVO> getPageList(PagingVO pgvo);
-
-
 
 }

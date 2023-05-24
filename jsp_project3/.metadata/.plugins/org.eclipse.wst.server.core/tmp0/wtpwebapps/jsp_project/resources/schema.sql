@@ -38,3 +38,6 @@ bnum int default 0,
 writer varchar(50) default '익명',
 comment text,
 reg_date datetime default now());
+
+--2023-05-23 페이징 mapper 기입
+select * from board order by bnum desc limit #{startPage},#{qty};

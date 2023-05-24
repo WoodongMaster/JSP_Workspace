@@ -101,16 +101,18 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int getTotal() {
+	public int getTotal(PagingVO pgvo) {
 		log.info(">>> getTotalDAO 진입");
-		int totalCount = sql.selectOne(NS+"getTotal");
+		int totalCount = sql.selectOne(NS+"getTotal", pgvo);
 		return totalCount;
 	}
 
 	@Override
 	public List<BoardVO> getPageList(PagingVO pgvo) {
-		log.info(">>> getTotalDAO 진입");
-		return sql.selectList(NS+"getPageList",pgvo);
+		log.info(">>> getPageListDAO 진입");
+//		return sql.selectList(NS+"getPageList",pgvo);
+		return sql.selectList(NS+"selectList",pgvo);
+		
 	}
 
 }

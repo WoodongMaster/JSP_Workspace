@@ -1,0 +1,9 @@
+
+5월 24, 2023 17:08:37.571 NEW SESSION
+5월 24, 2023 17:08:37.571 [2308:9584:0524/170837.570:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
+5월 24, 2023 17:08:37.674 [2308:9584:0524/170837.673:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
+5월 24, 2023 17:08:37.942 [2308:9584:0524/170837.942:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
+5월 24, 2023 17:08:38.166 [2308:9584:0524/170838.166:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
+5월 24, 2023 17:08:38.285 [2308:9584:0524/170838.285:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
+5월 24, 2023 17:08:38.423 [2308:9584:0524/170838.423:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
+5월 24, 2023 17:08:38.959 [2308:9584:0524/170838.958:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.131 s for first_image_paint 0.118 s
