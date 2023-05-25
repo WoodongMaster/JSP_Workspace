@@ -14,6 +14,7 @@ public class BoardVO {
 	private String write_date;
 	private int count;
 	private int likes;
+	private String imgfile;
 	
 	public BoardVO(){}
 	
@@ -37,10 +38,11 @@ public class BoardVO {
 	}
 
 	// 게시글 읽기
-	public BoardVO(int bnum, String title, String writer, String write_date,int count, int like,String post)
+	public BoardVO(int bnum, String title, String writer, String write_date,int count, int like,String post, String imgfile)
 	{
 		this(bnum,title,writer,write_date,count,like);
 		this.post = post;
+		this.imgfile=imgfile;
 	}
 
 	// 게시글 수정
@@ -107,11 +109,22 @@ public class BoardVO {
 		this.likes = like;
 	}
 
+	public String getImgfile() {
+		return imgfile;
+	}
+
+	public void setImgfile(String imgfile) {
+		this.imgfile = imgfile;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [bnum=" + bnum + ", title=" + title + ", writer=" + writer + ", post=" + post + ", write_date="
-				+ write_date + ", count=" + count + ", likes=" + likes + "]";
+				+ write_date + ", count=" + count + ", likes=" + likes + ", imgfile=" + imgfile + "]";
 	}
+
+
+	
 
 
 

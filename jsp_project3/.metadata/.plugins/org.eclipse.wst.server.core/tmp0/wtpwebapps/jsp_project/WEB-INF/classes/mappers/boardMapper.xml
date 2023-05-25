@@ -5,11 +5,11 @@
   
   <mapper namespace = "BoardMapper">
 	<insert id="reg" parameterType="bvo">
-	  	insert into board (title, writer, post) 
-  		values(#{title}, #{writer}, #{post})
+	  	insert into board (title, writer, post, imgfile) 
+  		values(#{title}, #{writer}, #{post}, #{imgfile})
 	</insert>
 	<select id="list" resultType="bvo">
-		select * from board
+		select * from board by bnum desc
 	</select>
 	<update id="countUP" parameterType="int">
 		update board set count=count+1 where bnum=#{bnum}
@@ -18,7 +18,7 @@
 		select * from board where bnum=#{bnum}
 	</select>
 	<update id="edit" parameterType="bvo">
-		update board set title=#{title}, post=#{post} where bnum=#{bnum}
+		update board set title=#{title}, post=#{post}, imgfile=#{imgfile} where bnum=#{bnum}
 	</update>
 	<delete id="remove" parameterType="int">
 		delete from board where bnum=#{bnum};
@@ -60,20 +60,13 @@
 	</sql>
 	
 	<select id="selectList" parameterType="pgvo" resultType="bvo">
-		select a.bnum, title, writer, write_date, count from (select bnum from board where bnum>0
+		select a.bnum, title, writer, write_date, count, imgfile from (select bnum from board where bnum>0
 		<include refid="search"></include>
 		order by bnum desc
 		limit #{startPage}, #{qty}
 		) a left join board b
 		on a.bnum = b.bnum
 	</select>
-	
-	<select id="my_getTotal" parameterType="pgvo" resultType="int">
-		select count(bnum) from board where writer=#{id}
-	</select>
 
-	<select id="my_getPageList" parameterType="pgvo" resultType="bvo">
-		select * from board where writer=#{id} order by bnum desc limit #{startPage},#{qty}
-	</select>
 	
   </mapper>

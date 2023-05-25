@@ -39,5 +39,6 @@ writer varchar(50) default '익명',
 comment text,
 reg_date datetime default now());
 
---2023-05-23 페이징 mapper 기입
-select * from board order by bnum desc limit #{startPage},#{qty};
+--2023-05-25 board에 imgfile 속성 추가
+alter table board add column imgfile varchar(100);
+

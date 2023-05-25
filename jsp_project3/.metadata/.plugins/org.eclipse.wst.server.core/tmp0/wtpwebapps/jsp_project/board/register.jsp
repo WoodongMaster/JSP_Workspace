@@ -9,10 +9,11 @@
 <body>
 <h1>Board Register Page</h1>
 
-<form action="/brd/insert" method="post">
+<form action="/brd/insert" method="post" enctype="multipart/form-data">>
 제목 : <input type="text" id = "title" name="title"/><p id="title_text"></p>
 작성자 : <input type="text" name="writer" value="${ses.id}" readonly/><br><p></p>
 내용 : <textarea rows="3" cols="30" name="post"></textarea><br>
+이미지업로드 : <input type="file" id="file" name="imgfile" accept="image/png, image/jpeg, image/jpg, image/bmp, image/gif"><br>
 <button type="submit" id="smt" disabled="disabled">완료</button>
 </form>
 	<script type="text/javascript">

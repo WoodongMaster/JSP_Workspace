@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <title>수정페이지</title>
 </head>
 <body>
-<form action="/brd/edit">
+<form action="/brd/edit" method="post" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<th>글번호</th>
@@ -45,8 +46,21 @@
 		<tr align="center">
 			<td><input name="post" value="${post.post}"></td>
 		</tr>
+		
+		<c:if test="${post.imgfile ne '' && post.imgfile ne null}">		
+		<tr>
+			<th>이미지</th>
+		</tr>
+		<tr align="center">
+			<td><img alt="없음" src="/_fileUpload/${post.imgfile}"></td>
+		</tr>
+		</c:if>
 	</table>
-	<button type="submit">수정완료</button><a href="/"><button>수정취소</button></a>
+	이미지업로드 : <img alt="없음" src="/_fileUpload/th_${post.imgfile}"><br>
+	<input type="hidden" name="imgfile" value="${post.imgfile}">
+	<input type="file" name="new_imgfile"><br>
+	<button type="submit">수정완료</button><br>
+	<a href="/"><button>수정취소</button></a>
 	</form>
 </body>
 </html>
