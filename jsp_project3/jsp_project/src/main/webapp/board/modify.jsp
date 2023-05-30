@@ -56,11 +56,29 @@
 		</tr>
 		</c:if>
 	</table>
-	이미지업로드 : <img alt="없음" src="/_fileUpload/th_${post.imgfile}"><br>
+	이미지업로드 : 
 	<input type="hidden" name="imgfile" value="${post.imgfile}">
-	<input type="file" name="new_imgfile"><br>
+	<input type="file" name="new_imgfile" onchange="setThumbnail(event)">
+	<div id="image_container"></div>
 	<button type="submit">수정완료</button><br>
 	<a href="/"><button>수정취소</button></a>
 	</form>
+	
+	<script type="text/javascript">
+    function setThumbnail(event) {
+       	document.getElementById("image_container").innerHTML = "";
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          img.style.width = "75px";
+          img.style.height = "75px";
+          document.querySelector("div#image_container").appendChild(img);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+      }
+	</script>
 </body>
 </html>

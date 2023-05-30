@@ -96,9 +96,8 @@
 		</c:if>
 
 		<c:forEach begin="${pgh.startPage}" end="${pgh.endPage}"
-			var="currentPageNum">
-			<a
-				href="/brd/page?pageNum=${currentPageNum}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">${currentPageNum }</a>
+			var="destPageNum">
+			<a href="/brd/page?pageNum=${destPageNum}&qty=${pgh.pgvo.qty}&type=${pgh.pgvo.type}&keyword=${pgh.pgvo.keyword}">${destPageNum }</a>
 		</c:forEach>
 
 		<%-- 다음페이지 버튼 --%>

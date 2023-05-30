@@ -152,9 +152,6 @@ public class BoardController extends HttpServlet {
 				String type = "";
 				String keyword = "";
 
-				HttpSession ses = request.getSession();
-				MemberVO mvo = (MemberVO) ses.getAttribute("ses");
-
 				if (request.getParameter("pageNum") != null) { // 값이 없다면 limit 1,10으로 있다면 그 값으로 limit
 					pageNum = Integer.parseInt(request.getParameter("pageNum"));
 					qty = Integer.parseInt(request.getParameter("qty"));

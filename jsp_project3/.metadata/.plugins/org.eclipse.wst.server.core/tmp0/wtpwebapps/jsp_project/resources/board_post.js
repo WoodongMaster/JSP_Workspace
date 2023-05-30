@@ -18,6 +18,7 @@ async function postCommentToServer(cmtData) {
 	} catch (error) {
 		console.log(error);
 	}
+	
 }
 
 // 미리 보낼 데이터를 만들어서 함수로 전달 cmtData
@@ -65,7 +66,7 @@ function printCommentList(bnum) {
 			spreadCommentList(result);
 		} else {
 			let div = document.getElementById('accordionFlushExample');
-			div.innerText = "등록된 댓글이 없습니다.";
+			div.innerHTML = "등록된 댓글이 없습니다.";
 		}
 	})
 }
@@ -79,7 +80,7 @@ function spreadCommentList(result) { // 댓글 list
 		html += `<h2 class="accordion-header" id="flush-heading${i}">`;
 		html += `<button class="accordion-button collapsed" `;
 		html += `type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${i}" aria-expanded="false" aria-controls="flush-collapse${i}">`;
-		html += `${result[i].cnum}, ${result[i].writer} </button></h2>`;
+		html += `작성자 : ${result[i].writer} </button></h2>`;
 		html += `<div id="flush-collapse${i}" class="accordion-collapse collapse" aria-labelledby="flush-heading${i}" data-bs-parent="#accordionFlushExample">`;
 		html += `<div class="accordion-body">`;
 		html += `<button type="button" data-cnum="${result[i].cnum}" data-writer="${result[i].writer}" class="btn btn-sm btn-outline-warning cmtModifyBtn">%</button>`;

@@ -1,12 +1,7 @@
 package domain;
 
 public class BoardVO {
-//	create table board(
-//	bno int primary key auto_increment,
-//	title varchar(100) not null,
-//	writer varchar(100) not null,
-//	write_date datetime default now(),
-//	post text);
+
 	private int bnum;
 	private String title;
 	private String writer;

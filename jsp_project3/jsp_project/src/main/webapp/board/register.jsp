@@ -13,11 +13,12 @@
 제목 : <input type="text" id = "title" name="title"/><p id="title_text"></p>
 작성자 : <input type="text" name="writer" value="${ses.id}" readonly/><br><p></p>
 내용 : <textarea rows="3" cols="30" name="post"></textarea><br>
-이미지업로드 : <input type="file" id="file" name="imgfile" accept="image/png, image/jpeg, image/jpg, image/bmp, image/gif"><br>
+이미지업로드 : <input type="file" id="file" name="imgfile" accept="image/png, image/jpeg, image/jpg, image/bmp, image/gif" onchange="setThumbnail(event)">
+<div id="image_container"></div><br>
 <button type="submit" id="smt" disabled="disabled">완료</button>
 </form>
 	<script type="text/javascript">
-	var regExp = /^[a-zA-Z0-9ㄱ-ㅎ가-힣]{2,50}$/;
+	var regExp = /^[a-zA-Z0-9ㄱ-ㅎ가-힣\s]{2,50}$/;
 	var title = document.getElementById('title');
 	var smt = document.getElementById('smt'); 
 	title.addEventListener('input', () => {
@@ -32,6 +33,21 @@
 			smt.disabled = true;
 		}
 	 });
+	
+    function setThumbnail(event) {
+       	document.getElementById("image_container").innerHTML = "";
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          img.style.width = "75px";
+          img.style.height = "75px";
+          document.querySelector("div#image_container").appendChild(img);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+      }
 	</script>
 </body>
 </html>

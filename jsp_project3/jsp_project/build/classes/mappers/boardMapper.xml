@@ -30,7 +30,7 @@
 		update board set likes=(select count(id) from likelist where bnum=#{bnum})
 	</update>
 	<select id="getTotal" parameterType="pgvo" resultType="int">
-		select count(bnum) from board where bnum>0
+		select count(bnum) from board
 		<include refid="search"></include>
 	</select>
 	<select id="getPageList" parameterType="pgvo" resultType="bvo">
@@ -39,7 +39,7 @@
 	
 	<sql id="search">
 		<if test="type != null">
-			<trim prefix="and (" suffix=")" prefixOverrides="OR">
+			<trim prefix="where"  prefixOverrides="OR">
 				<foreach collection="typeToArray" item="type">
 					<trim prefix="OR">
 						<choose>
@@ -60,7 +60,7 @@
 	</sql>
 	
 	<select id="selectList" parameterType="pgvo" resultType="bvo">
-		select a.bnum, title, writer, write_date, count, imgfile from (select bnum from board where bnum>0
+		select a.bnum, title, writer, write_date, count, imgfile from (select bnum from board
 		<include refid="search"></include>
 		order by bnum desc
 		limit #{startPage}, #{qty}

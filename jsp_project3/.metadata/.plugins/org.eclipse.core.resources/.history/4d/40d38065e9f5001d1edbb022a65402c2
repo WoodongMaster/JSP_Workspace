@@ -1,9 +1,0 @@
-package domain;
-
-public class CommentVO {
-	private int cnum;
-	private int bnum;
-	private String writer;
-	private String comment;
-	private String reg_date;
-}
