@@ -34,6 +34,7 @@ public class PagingHandler {
 		if(realEndPage < this.endPage) {
 			this.endPage = realEndPage;
 		}
+		
 		//현재 화면에서 보여지는 startpage = 1, 11, 21 ...
 		//현재 화면에서 보여지는 endpage = 10, 20, 30 ... realEndPage까지
 		this.prev = this.startPage>1;

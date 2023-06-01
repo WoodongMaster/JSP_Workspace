@@ -19,7 +19,7 @@
 <title>게시글 상세 페이지</title>
 </head>
 <body>
-
+<h1>게시글 상세 페이지 입니다.</h1>
 	<table class="table" align="center" style="width:50%">
 		<tr class="table-primary" align="center">
 			<th>글번호</th>
@@ -69,8 +69,8 @@
 
 	<div align="center">
 		<c:if test="${post.writer eq sesID}">
-			<a href="/brd/modify?bnum=${post.bnum}"><button>수정하기</button></a>
-			<a href="/brd/remove?bnum=${post.bnum}&imgName=${post.imgfile}"><button>삭제하기</button></a>
+			<a href="/brd/modify?bnum=${post.bnum}"><button class="btn btn-warning">수정하기</button></a>
+			<a href="/brd/remove?bnum=${post.bnum}&imgName=${post.imgfile}"><button class="btn btn-danger">삭제하기</button></a>
 		</c:if>
 
 		<button onclick="history.back()" class="btn btn-secondary">돌아가기</button>

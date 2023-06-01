@@ -33,7 +33,7 @@
 					name="password">
 			</div>
 			<button type="submit" class="btn btn-success">로그인</button>
-			<a href="/"><button class="btn btn-secondary">돌아가기</button></a>
+			<a href="/"><button type="button" class="btn btn-secondary">돌아가기</button></a>
 		</form>
 	</div>
 	<script type="text/javascript">

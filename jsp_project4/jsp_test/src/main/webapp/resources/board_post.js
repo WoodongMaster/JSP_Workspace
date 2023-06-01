@@ -78,10 +78,10 @@ function spreadCommentList(result) { // 댓글 list
 	for (let i = 0; i < result.length; i++) {
 		let html = `<div class="accordion-item">`;
 		html += `<h2 class="accordion-header" id="flush-heading${i}">`;
-		html += `<button class="accordion-button collapsed" `;
+		html += `<button class="accordion-button collapsed-open" `;
 		html += `type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${i}" aria-expanded="false" aria-controls="flush-collapse${i}">`;
 		html += `작성자 : ${result[i].writer} </button></h2>`;
-		html += `<div id="flush-collapse${i}" class="accordion-collapse collapse" aria-labelledby="flush-heading${i}" data-bs-parent="#accordionFlushExample">`;
+		html += `<div id="flush-collapse${i}" class="accordion-collapse collapse-open" aria-labelledby="flush-heading${i}" data-bs-parent="#accordionFlushExample">`;
 		html += `<div class="accordion-body">`;
 		html += `<button type="button" data-cnum="${result[i].cnum}" data-writer="${result[i].writer}" class="btn btn-sm btn-outline-warning cmtModifyBtn">%</button>`;
 		html += `<button type="button" data-cnum="${result[i].cnum}" data-writer="${result[i].writer}" class="btn btn-sm btn-outline-danger cmtDelBtn">X</button>`;

@@ -34,24 +34,24 @@
 				<a href="/mem/logout"><button class="btn btn-danger">로그아웃</button></a>
 				<br>
 				<br>
-				<a href="/brd/register"><button>게시글 작성</button></a>
+				<a href="/brd/register"><button class="btn btn-primary">게시글 작성</button></a>
 				<br>
 				<br>
-				<a href="/mem/modify"><button>회원정보수정</button></a>
+				<a href="/mem/modify"><button class="btn btn-secondary">회원정보수정</button></a>
 				<br>
 				<br>
-				<a href="/mem/list"><button>회원리스트 보기</button></a>
-				<a href="/brd/page?type=w&keyword=${ses.id}"><button>내가
+				<a href="/mem/list"><button class="btn btn-secondary">회원리스트 보기</button></a>
+				<a href="/brd/page?type=w&keyword=${ses.id}"><button class="btn btn-secondary">내가
 						쓴 글보기</button></a>
 			</c:when>
 			<c:otherwise>
 				<a href="/mem/login"><button class="btn btn-success">로그인</button></a>
 				<br>
 				<br>
-				<a href="/mem/join"><button>회원가입</button></a>
+				<a href="/mem/join"><button class="btn btn-primary">회원가입</button></a>
 			</c:otherwise>
 		</c:choose>
-		<a href="/brd/page"><button>게시글보기</button></a>
+		<a href="/brd/page"><button class="btn btn-secondary">게시글보기</button></a>
 	</div>
 	<script type="text/javascript">
 	const edit_msg = `<c:out value="${edit_msg}" />`;

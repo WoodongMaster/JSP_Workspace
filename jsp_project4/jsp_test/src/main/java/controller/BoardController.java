@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 
 
+
 import java.io.IOException;
 
 import java.util.List;
@@ -62,24 +63,23 @@ public class BoardController extends HttpServlet {
 			break;
 		case "insert":
 			try {
-				// 파일을 저장할 물리적인 경로를 설정
-				savePath = getServletContext().getRealPath("/_fileUpload"); // realPath : webapp
+				savePath = getServletContext().getRealPath("/_fileUpload"); 
 				log.info(">>> 파일 저장 경로 : "+savePath);
 				File fileDir = new File(savePath);
 				
 				DiskFileItemFactory FIF = new DiskFileItemFactory();
-				FIF.setRepository(fileDir); // 파일의 저장위치를 담고있는 객체를 저장
-				FIF.setSizeThreshold(2*1024*1024); // 파일 저장을 위한 임시 메모리 용량 설정 : byte단위 2MB
+				FIF.setRepository(fileDir); 
+				FIF.setSizeThreshold(2*1024*1024); 
 				
 				BoardVO bvo = new BoardVO();
-				// multipart/form-data 형식으로 넘어온 request 객체를 다루기 쉽게 변환해주는 역할
+
 				ServletFileUpload fileUpload = new ServletFileUpload(FIF);
 				
 				List<FileItem> itemList = fileUpload.parseRequest(request);
 				for(FileItem item : itemList) {
 					switch(item.getFieldName()) {
 					case "title":
-						bvo.setTitle(item.getString(UTF8)); // 인코딩 형식을 담아서 변환
+						bvo.setTitle(item.getString(UTF8)); 
 						break;
 					case "writer":
 						bvo.setWriter(item.getString(UTF8));
@@ -88,10 +88,8 @@ public class BoardController extends HttpServlet {
 						bvo.setPost(item.getString(UTF8));
 						break;
 					case "imgfile":
-						// 이미지가 있는지 없는지 체크
 						log.info(">>> item 사이즈 : "+item.getSize());
-						if(item.getSize() > 0) { // String 형식이 아니라서 사이즈로 이미지파일 유무 확인
-							// getName : 경로를 포함한 파일이름 "/~/~/dog.jpg"
+						if(item.getSize() > 0) {
 							String fileName = item.getName().substring(item.getName().lastIndexOf("/")+1); 
 							fileName = System.currentTimeMillis()+"_"+fileName;
 							log.info(">>> fileName : "+fileName);
@@ -100,11 +98,9 @@ public class BoardController extends HttpServlet {
 							log.info(">>> 실제 파일 경로 : "+ uploadFilePath);
 							
 							try {
-								item.write(uploadFilePath); // path에 item을 저장
+								item.write(uploadFilePath);
 								bvo.setImgfile(fileName);
-								
-// 			-------------------------썸네일 작업--------------------------
-								
+										
 								Thumbnails.of(uploadFilePath).size(75,75).toFile(new File(fileDir+File.separator+"th_"+fileName));
 								
 							} catch (Exception e) {
@@ -119,15 +115,6 @@ public class BoardController extends HttpServlet {
 				log.info(">>> isOk 값 : " + isOk);
 				log.info(">>> 게시글 등록" + ((isOk > 0) ? "성공" : "실패"));
 				
-				
-				
-//				String title = request.getParameter("title");
-//				String post = request.getParameter("post");
-//				String writer = request.getParameter("writer");
-//				BoardVO bvo = new BoardVO(title, writer, post);
-//				isOk = bsv.insert(bvo);
-//				log.info(">>> isOk 값 : " + isOk);
-//				log.info(">>> 게시글 등록" + ((isOk > 0) ? "성공" : "실패"));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -151,7 +138,7 @@ public class BoardController extends HttpServlet {
 				String type = "";
 				String keyword = "";
 
-				if (request.getParameter("pageNum") != null) { // 값이 없다면 limit 1,10으로 있다면 그 값으로 limit
+				if (request.getParameter("pageNum") != null) { 
 					pageNum = Integer.parseInt(request.getParameter("pageNum"));
 					qty = Integer.parseInt(request.getParameter("qty"));
 				}
@@ -161,14 +148,14 @@ public class BoardController extends HttpServlet {
 					log.info(">>> type : " + type + " keyword : " + keyword);
 				}
 
-				PagingVO pgvo = new PagingVO(pageNum, qty); // 이미 1,10 default로 설정되어있음
+				PagingVO pgvo = new PagingVO(pageNum, qty); 
 				pgvo.setType(type);
 				pgvo.setKeyword(keyword);
 				log.info(">>> pgvo : " + pgvo);
 				int totalCount = bsv.getTotal(pgvo);
 				log.info(">>>>총 개수 : " + totalCount);
 
-				List<BoardVO> list = bsv.getPageList(pgvo); // limit를 이용한 select List를 호출(startPage, qty)
+				List<BoardVO> list = bsv.getPageList(pgvo);
 				log.info(">>>> 가져온 리스트 사이즈 : " + list.size());
 
 				PagingHandler ph = new PagingHandler(pgvo, totalCount);
@@ -224,7 +211,6 @@ public class BoardController extends HttpServlet {
 				
 				BoardVO bvo = new BoardVO();
 				ServletFileUpload fileUpload = new ServletFileUpload(FIF);
-				log.info(">>>> update 준비");
 				
 				List<FileItem> itemList = fileUpload.parseRequest(request);
 				
@@ -244,18 +230,17 @@ public class BoardController extends HttpServlet {
 						old_imgfile = item.getString(UTF8);
 						break;
 					case "new_imgfile":
-						if(item.getSize()>0) { // 교체할 이미지 파일이 있음
-							if(old_imgfile!=null) { // 기존 이미지 파일이 있는 경우								
+						log.info(">>> item : "+item);
+						if(item.getSize()>0) { 
+							if(old_imgfile!=null) {						
 								FileHandler fh = new FileHandler();
 								isOk = fh.deleteFile(old_imgfile, savePath);
 								log.info((isOk==1 ? "교체성공" : "교체실패"));
 							}
-							// 파일명
-							// getName => 경로+파일명
+
 							String fileName = item.getName().substring(item.getName().lastIndexOf("/")+1);
 							log.info(">>> new_imgfileName : "+fileName);
-							
-							// 실제 파일명
+
 							fileName = System.currentTimeMillis()+"_"+fileName;
 							File uploadFilePath = new File(fileDir+File.separator+fileName);
 							try {
@@ -263,23 +248,17 @@ public class BoardController extends HttpServlet {
 								bvo.setImgfile(fileName);
 								log.info(">>> bvo.imgfile : "+bvo.getImgfile());
 								
-//					 			-------------------------썸네일 작업--------------------------
-								
 								Thumbnails.of(uploadFilePath).size(75, 75).toFile(new File(fileDir+File.separator+"th_"+fileName));
 							} catch (Exception e2) {
 								log.info(">>> img file update 오류");
 								e2.printStackTrace();
 							}
-						}else { // 교체할 이미지 파일이 없음 = 기존 이미지 그대로
+						}else {
 							bvo.setImgfile(old_imgfile);
 						}
 						break;
 					}
 				}
-//				int bnum = Integer.parseInt(request.getParameter("bnum"));
-//				String title = request.getParameter("title");
-//				String post = request.getParameter("post");
-//				BoardVO bvo = new BoardVO(bnum, title, post);
 				isOk = bsv.edit(bvo);
 				log.info(">>> 게시글 수정" + ((isOk > 0) ? "성공" : "실패"));
 			} catch (Exception e) {
@@ -292,11 +271,10 @@ public class BoardController extends HttpServlet {
 			try {
 				int bnum = Integer.parseInt(request.getParameter("bnum"));
 				savePath = getServletContext().getRealPath("/_fileUpload");
-				// 이미지, 썸네일 파일 삭제 추가
 				
 				FileHandler fh = new FileHandler();
 				String fileName = request.getParameter("imgName");
-				fh.deleteFile(fileName, savePath); // 파일명
+				fh.deleteFile(fileName, savePath);
 				isOk = bsv.remove(bnum);
 				log.info(">>> 게시글 삭제" + ((isOk > 0) ? "성공" : "실패"));
 			} catch (Exception e) {
